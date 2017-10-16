@@ -11,9 +11,20 @@ class RestaurantsController extends Controller
     use ApiControllerTrait;
 
     protected $model;
+    protected $rules = [
+      'name'=>'required|min:3',
+      'description'=>'required|min:3'
+    ];
+
+    protected $messaged = [
+        'required'=>':attribute é obrigatório',
+        'min'=>':attribute precisa de pelo menos :min caracteres'
+    ];
 
     public function __construct(Restaurant $model)
     {
         $this->model = $model;
     }
+
+   
 }
